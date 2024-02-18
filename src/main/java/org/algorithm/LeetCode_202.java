@@ -20,17 +20,17 @@ public class LeetCode_202 {
     * */
 
     public int getSum(int n){
-        int sum=0;
-        while(n!=0){
-            sum+=(n%10)*(n%10);
-            n=n/10;
+        int sum = 0;
+        while(n != 0){
+            sum += (n%10)*(n%10);
+            n = n/10;
         }
         return sum;
     }
     public boolean isHappy(int n) {
-        HashSet<Integer> hash_table=new HashSet<>();
-        int sum=getSum(n);
-        while(!hash_table.contains(sum)&& sum!=1){
+        HashSet<Integer> hash_table = new HashSet<>();
+        int sum = getSum(n);
+        while(!hash_table.contains(sum) && sum != 1){
             //把当前sum加入HashSet
             hash_table.add(sum);
             //获得新的sum

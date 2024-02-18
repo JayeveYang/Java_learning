@@ -11,9 +11,9 @@ public class LeetCode_349 {
     * */
     public int[] intersection(int[] nums1, int[] nums2) {
         //获得第一个数组的不重复序列
-        HashSet<Integer> table=new HashSet<>();
+        HashSet<Integer> table = new HashSet<>();
         //存放重复序列
-        HashSet<Integer> res=new HashSet<>();
+        HashSet<Integer> res = new HashSet<>();
         for(int num:nums1){
             table.add(num);
         }
@@ -22,11 +22,11 @@ public class LeetCode_349 {
                 res.add(num);
             }
         }
-        int i=0;
+        int i = 0;
         //初始化一个和Set一样大的int数组用来保存结果
-        int[] result=new int[res.size()];
-        for(int num:res){
-            result[i]=num;
+        int[] result = new int[res.size()];
+        for(int num : res){
+            result[i] = num;
             i++;
         }
         return result;
