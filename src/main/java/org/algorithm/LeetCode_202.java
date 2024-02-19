@@ -28,13 +28,13 @@ public class LeetCode_202 {
         return sum;
     }
     public boolean isHappy(int n) {
-        HashSet<Integer> hash_table = new HashSet<>();
+        HashSet<Integer> table = new HashSet<>();
         int sum = getSum(n);
-        while(!hash_table.contains(sum) && sum != 1){
+        while(!table.contains(sum) && sum != 1){
             //把当前sum加入HashSet
-            hash_table.add(sum);
+            table.add(sum);
             //获得新的sum
-            sum=getSum(sum);
+            sum = getSum(sum);
         }
         return sum == 1;
     }

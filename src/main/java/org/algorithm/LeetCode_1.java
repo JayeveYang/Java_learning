@@ -16,13 +16,13 @@ public class LeetCode_1 {
 
     //优化方法
     public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> hashtable = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> table = new HashMap<Integer, Integer>();
         //只需一次循环，先判断是否存在，后直接写入，避免出现target-nums[i]是当前值的情况
         for (int i = 0; i < nums.length; ++i) {
-            if (hashtable.containsKey(target - nums[i])) {
-                return new int[]{hashtable.get(target - nums[i]), i};
+            if (table.containsKey(target - nums[i])) {
+                return new int[]{table.get(target - nums[i]), i};
             }
-            hashtable.put(nums[i], i);
+            table.put(nums[i], i);
         }
         return new int[0];
     }
