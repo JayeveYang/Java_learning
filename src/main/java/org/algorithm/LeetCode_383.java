@@ -4,18 +4,39 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LeetCode_383 {
+    /*
+     * 给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
+     * 如果可以，返回 true ；否则返回 false;
+     * magazine 中的每个字符只能在 ransomNote 中使用一次
+     * */
+
+    /*
+     * 思路
+     * 由于字符串只有小写英文字母组成，考虑数组哈希表
+     * */
+
+    // 数组哈希表
     public boolean canConstruct(String ransomNote, String magazine) {
-        /*
-        * 给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
-        * 如果可以，返回 true ；否则返回 false;
-        * magazine 中的每个字符只能在 ransomNote 中使用一次
-        * */
+        int[] hashTable = new int[26];
+        for(int i=0;i<magazine.length();i++){
+            char c = magazine.charAt(i);
+            hashTable[c-'a']++;
+        }
+        for(int i=0;i<ransomNote.length();i++){
+            char c = ransomNote.charAt(i);
+            if(hashTable[c-'a'] == 0){
+                return false;
+            }
+            else{
+                hashTable[c-'a']--;
+            }
 
-        /*
-        * 思路
-        * 由于字符串只有小写英文字母组成，考虑数组哈希表
-        * */
+        }
+        return true;
+    }
 
+    // Map
+    public boolean canConstruct1(String ransomNote, String magazine) {
         Map<Character,Integer> hashTable = new HashMap<>();
         for(int i=0;i<magazine.length();i++){
             char c = magazine.charAt(i);
