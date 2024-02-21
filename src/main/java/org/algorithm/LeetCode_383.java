@@ -1,5 +1,6 @@
 // https://leetcode.cn/problems/ransom-note/
 package org.algorithm;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,17 +19,16 @@ public class LeetCode_383 {
     // 数组哈希表
     public boolean canConstruct(String ransomNote, String magazine) {
         int[] hashTable = new int[26];
-        for(int i=0;i<magazine.length();i++){
+        for (int i = 0; i < magazine.length(); i++) {
             char c = magazine.charAt(i);
-            hashTable[c-'a']++;
+            hashTable[c - 'a']++;
         }
-        for(int i=0;i<ransomNote.length();i++){
+        for (int i = 0; i < ransomNote.length(); i++) {
             char c = ransomNote.charAt(i);
-            if(hashTable[c-'a'] == 0){
+            if (hashTable[c - 'a'] == 0) {
                 return false;
-            }
-            else{
-                hashTable[c-'a']--;
+            } else {
+                hashTable[c - 'a']--;
             }
 
         }
@@ -37,18 +37,17 @@ public class LeetCode_383 {
 
     // Map
     public boolean canConstruct1(String ransomNote, String magazine) {
-        Map<Character,Integer> hashTable = new HashMap<>();
-        for(int i=0;i<magazine.length();i++){
+        Map<Character, Integer> hashTable = new HashMap<>();
+        for (int i = 0; i < magazine.length(); i++) {
             char c = magazine.charAt(i);
             hashTable.put(c, hashTable.getOrDefault(c, 0) + 1);
         }
-        for(int i=0;i<ransomNote.length();i++){
+        for (int i = 0; i < ransomNote.length(); i++) {
             char c = ransomNote.charAt(i);
-            if(! hashTable.containsKey(c)){
+            if (!hashTable.containsKey(c)) {
                 return false;
-            }
-            else{
-                if(hashTable.get(c) < 1) return false;
+            } else {
+                if (hashTable.get(c) < 1) return false;
                 hashTable.put(c, hashTable.get(c) - 1);
             }
         }
