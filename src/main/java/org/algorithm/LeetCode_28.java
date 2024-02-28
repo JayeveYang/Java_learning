@@ -12,11 +12,11 @@ public class LeetCode_28 {
     * 
     * */
     //获得下一个位置的数组
-    public void getNext(char[] t, int[] next) {
+    public void getNext(String t, int[] next) {
         int i = 0, j = -1;
         next[0] = j;
-        while (i < t.length) {
-            if (j == -1 || t[i] == t[j]) {
+        while (i < t.length()) {
+            if (j == -1 || t.charAt(i) == t.charAt(j)) {
                 i++;
                 j++;
                 next[i] = j;
@@ -30,19 +30,17 @@ public class LeetCode_28 {
     public int strStr(String haystack, String needle) {
         int i = 0, j = 0;
         if (needle.length() > haystack.length()) return -1;
-        char[] s = haystack.toCharArray();
-        char[] t = needle.toCharArray();
         int[] next = new int[needle.length() + 1];
-        getNext(t, next);
-        while (i < s.length && j < t.length) {
-            if (j == -1 || s[i] == t[j]) {
+        getNext(needle, next);
+        while (i < haystack.length() && j < needle.length()) {
+            if (j == -1 || haystack.charAt(i) == needle.charAt(j)) {
                 i++;
                 j++;
             } else {
                 j = next[j];
             }
         }
-        if (j == t.length) return i - t.length;
+        if (j == needle.length()) return i - j;
         else return -1;
     }
 }
