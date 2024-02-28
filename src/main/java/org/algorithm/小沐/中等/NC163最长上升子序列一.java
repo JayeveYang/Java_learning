@@ -23,6 +23,8 @@ public class NC163最长上升子序列一 {
         if (arr.length == 0) {
             return 0;
         }
+
+        // 用于存储前面有几个合规的数据
         int[] resultArr = new int[arr.length];
         Arrays.fill(resultArr, 1);
         int sum = 1;
