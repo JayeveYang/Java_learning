@@ -53,6 +53,5 @@ public class LeetCode_28 {
                 return i - needle.length() + 1;
         }
         return -1;
-
     }
 }
