@@ -15,6 +15,8 @@ public class LeetCode_34 {
         int start;
         if (nums.length < 1) return new int[]{-1, -1};
         start = getIndex(nums, target);
+        // start == nums.length 右边界下标越界
+        // nums[start] != target适用于判断左边界是不是target
         if (start == nums.length || nums[start] != target)
             return new int[]{-1, -1};
         int end = getIndex(nums, target + 1);
@@ -35,6 +37,7 @@ public class LeetCode_34 {
         return right;
     }
 
+    //时间复杂度为O(logn)+O(m),其中m为区间长度
     public int[] searchRange1(int[] nums, int target) {
         int left = 0, right = nums.length - 1;
         int i, j;
